@@ -30,7 +30,9 @@ class Poltergeist.Browser
 
     if errors.length > 0
       @page.clearErrors()
-      throw new Poltergeist.JavascriptError(errors)
+
+      error_to_send = new Poltergeist.JavascriptError(errors)
+      this.owner.sendError(error_to_send)
     else
       @owner.sendResponse(response)
 
